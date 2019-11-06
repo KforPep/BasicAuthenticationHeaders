@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model AuthHeaders.Models.User
+<!-- DataTables JavaScript -->
+<script type="text/javascript" src="~/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="~/js/bootstrap/bootstrap.min.js"></script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="UserName" class="form-control" autofocus />
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="text" id="Password" class="form-control" type="password" />
+    </div>
+    <button type="submit" id="btnSubmit" onclick="AuthHeader();">Submit</button>
+</div>
+<div id="result"></div>
+@*<script>
+        function AuthHeader() {
+            var user = document.getElementById('UserName').text;
+            var pass = document.getElementById('Password').text;
+
+            var token = make_base_auth(user, pass);
+
+            $.ajax
+                ({
+                    type: "GET",
+                    url: "./api/LogIn/getUser",
+                    dataType: 'html',
+
+                    data: '{}',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', make_base_auth(user, pass));
+                    },
+                    success: function () {
+                        var txtUser = document.getElementById('UserName');
+                        var txtPass = document.getElementById('Password');
+                        txtUser.text = "Make it work you dumb idiot";
+                        txtPass.text = "Obviously it isn't working...";
+                    }
+                });
+            console.log("Username is:" + user);
+            console.log("Password is:" + pass);
+        }
+
+        function make_base_auth(username, password) {
+            var tok = username + ':' + password;
+            var hash = btoa(tok);
+            return hash;
+        }
+    </script>*@
+<script>
+    //function getCookie(name) {
+    //    var re = new RegExp(name + "=([^;]+)");
+    //    var value = re.exec(document.cookie);
+    //    return (value != null) ? unescape(value[1]) : null;
+    //}
+    //function cookies() {
+    //    document.cookie = "username=pm";
+    //}
+    function AuthHeader() {
+        var user = document.getElementById('UserName').value;
+        var pass = document.getElementById('Password').value;
+
+        var token = make_base_auth(user, pass);
+        var key = make_base_auth("pm", "pm");
+
+        //var xhr = new XMLHttpRequest();
+        //xhr.open("GET", "./api/LogIn/getUser", true);
+        //xhr.withCredentials = true;
+        //xhr.setRequestHeader("Authorization", key);
+        //console.log('key: ' + key);
+        //xhr.onload = function () {
+        //    console.log("xhr.responseText: " + xhr.responseText);
+        //};
+        //xhr.send();
+
+        $.ajax
+            ({
+                type: "GET",
+                url: "./api/LogIn/getUser",
+                dataType: 'html',
+                xhrFields: {
+                    withCredentials: true
+                },
+                headers: {
+                    "Authorization": token
+                },
+                data: '',
+                success: function () { $('#result').html('Success') },
+                error: function () { $('#result').html('Failure') }
+            });
+    }
+
+    function make_base_auth(username, password) {
+        var tok = username + ':' + password;
+        var hash = btoa(tok);
+        return "Basic " + hash;
+    }
+</script>

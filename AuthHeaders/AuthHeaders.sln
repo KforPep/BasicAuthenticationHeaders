@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthHeaders", "AuthHeaders\AuthHeaders.csproj", "{9395E259-4A1D-431C-A6CF-C6D9F3CBFEEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9395E259-4A1D-431C-A6CF-C6D9F3CBFEEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9395E259-4A1D-431C-A6CF-C6D9F3CBFEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9395E259-4A1D-431C-A6CF-C6D9F3CBFEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9395E259-4A1D-431C-A6CF-C6D9F3CBFEEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F9B6F9E-594C-4D45-9E88-F98E1321F795}
+	EndGlobalSection
+EndGlobal
